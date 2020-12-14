@@ -9,15 +9,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * <p>
- * 亿点点分享（上）- 函数式编程介绍
+ * 亿点点分享（上）- 函数式编程测试类
  * </p>
  *
  * @author yangkai.shen
@@ -91,51 +88,6 @@ public class FunctionalTests {
             this.value += countValue;
             return this.value;
         }
-    }
-
-    @Test
-    public void givenTwoFunctions_thenComposeThemInNewFunction() {
-        Predicate<String> startsWithA = (text) -> text.startsWith("A");
-        Predicate<String> endsWithX = (text) -> text.endsWith("x");
-        Predicate<String> startsWithAAndEndsWithX = (text) -> startsWithA.test(text) && endsWithX.test(text);
-        String input = "A man is standing there with a box";
-        assertTrue(startsWithAAndEndsWithX.test(input));
-    }
-
-    @Test
-    public void givenTwoPredicates_thenComposeThemUsingAnd() {
-        Predicate<String> startsWithA = (text) -> text.startsWith("A");
-        Predicate<String> endsWithX = (text) -> text.endsWith("x");
-        Predicate<String> startsWithAAndEndsWithX = startsWithA.and(endsWithX);
-        String input = "A man is standing there with a box";
-        assertTrue(startsWithAAndEndsWithX.test(input));
-    }
-
-    @Test
-    public void givenTwoPredicates_thenComposeThemUsingOr() {
-        Predicate<String> startsWithA = (text) -> text.startsWith("A");
-        Predicate<String> endsWithX = (text) -> text.endsWith("x");
-        Predicate<String> startsWithOrEndsWithX = startsWithA.or(endsWithX);
-        String input = "A man";
-        assertTrue(startsWithOrEndsWithX.test(input));
-    }
-
-    @Test
-    public void givenTwoPredicates_thenComposeThemUsingCompose() {
-        Function<Integer, Integer> squareOp = (value) -> value * value;
-        Function<Integer, Integer> doubleOp = (value) -> 2 * value;
-        // 先执行 doubleOp 再执行 squareOp
-        Function<Integer, Integer> doubleThenSquare = squareOp.compose(doubleOp);
-        assertEquals(36, doubleThenSquare.apply(3));
-    }
-
-    @Test
-    public void givenTwoPredicates_thenComposeThemUsingAndThen() {
-        Function<Integer, Integer> squareOp = (value) -> value * value;
-        Function<Integer, Integer> doubleOp = (value) -> 2 * value;
-        // 先执行 squareOp 再执行 doubleOp
-        Function<Integer, Integer> doubleThenSquare = squareOp.andThen(doubleOp);
-        assertEquals(18, doubleThenSquare.apply(3));
     }
 
     @Test
