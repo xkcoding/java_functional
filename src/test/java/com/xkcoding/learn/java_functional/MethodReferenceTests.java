@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * <p>
- * 方法引用
+ * 亿点点分享（上）- 方法引用
  * </p>
  *
  * @author yangkai.shen
@@ -22,7 +22,7 @@ public class MethodReferenceTests {
 
     @Test
     public void givenNewInstance_thenReferenceConstructorInFunction() {
-//        Supplier<User> supplier = () -> new User();
+        // Supplier<User> supplier = () -> new User();
         Supplier<User> supplier = User::new;
         assertNotNull(supplier.get());
     }
@@ -30,21 +30,21 @@ public class MethodReferenceTests {
     @Test
     public void givenInstance_thenReferenceInFunction() {
         User user = User.builder().username("zhangsan").build();
-//        Supplier<String> supplier = () -> user.getUsername();
+        // Supplier<String> supplier = () -> user.getUsername();
         Supplier<String> supplier = user::getUsername;
         assertEquals("zhangsan", supplier.get());
     }
 
     @Test
     public void givenStringIndex_thenReferenceInFunction() {
-//        BiFunction<String, String, Integer> paramRef = (a, b) -> a.indexOf(b);
+        // BiFunction<String, String, Integer> paramRef = (a, b) -> a.indexOf(b);
         BiFunction<String, String, Integer> paramRef = String::indexOf;
         assertEquals(-1, paramRef.apply("Hello", "World"));
     }
 
     @Test
     public void givenStaticMethod_thenReferenceInFunction() {
-//        Greeting greeting = (a, b) -> Player.sayHello(a, b);
+        // Greeting greeting = (a, b) -> Player.sayHello(a, b);
         Greeting greeting = Player::sayHello;
         assertEquals("Hello: World", greeting.sayHello("Hello", "World"));
     }

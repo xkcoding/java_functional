@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * <p>
- * 亿点点分享（上）
+ * 亿点点分享（上）- 函数式编程介绍
  * </p>
  *
  * @author yangkai.shen
@@ -39,7 +39,14 @@ public class FunctionIntroTests {
         String authorA = "张三";
         String authorB = "李四";
         String authorC = "王五";
-        List<Book> books = Arrays.asList(new Book("C++编程", authorA, 1216), new Book("C#编程", authorA, 365), new Book("Java编程", authorB, 223), new Book("Ruby编程", authorB, 554), new Book("PHP天下第一", authorB, 607), new Book("Python牛逼", authorC, 352));
+        List<Book> books = Arrays.asList(
+                new Book("C++编程", authorA, 1216),
+                new Book("C#编程", authorA, 365),
+                new Book("Java编程", authorB, 223),
+                new Book("Ruby编程", authorB, 554),
+                new Book("PHP天下第一", authorB, 607),
+                new Book("Python牛逼", authorC, 352)
+        );
         List<Book> booksFiltered = new ArrayList<>();
         for (Book book : books) {
             if (book.getTitle()
@@ -158,7 +165,6 @@ public class FunctionIntroTests {
     }
 
     class TestProducer implements IProducer {
-
         @Override
         public Object produce() {
             return null;
