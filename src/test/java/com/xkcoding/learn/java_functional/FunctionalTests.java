@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @date Created in 2020-12-13 23:03
  */
 @Slf4j
-public class FunctionIntroTests {
+public class FunctionalTests {
 
     @AllArgsConstructor
     @Getter
@@ -49,7 +49,7 @@ public class FunctionIntroTests {
         );
         List<Book> booksFiltered = new ArrayList<>();
         for (Book book : books) {
-            if (book.getTitle()
+            if (!book.getTitle()
                     .contains("C")) {
                 booksFiltered.add(book);
             }
@@ -65,6 +65,8 @@ public class FunctionIntroTests {
             System.out.println(booksFiltered.get(i)
                     .getAuthor());
         }
+
+        System.out.println("==========我是分割线==========");
         books.stream()
                 .filter(b -> !b.getTitle()
                         .contains("C"))
