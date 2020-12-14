@@ -95,15 +95,15 @@ public class FunctionalTests {
         HigherOrderFunctionClass higherOrderFunctionClass = new HigherOrderFunctionClass();
         IFactory<User> factory = higherOrderFunctionClass.createFactory(() -> User.builder()
                 .id(100L)
-                .name("xxx")
+                .username("xxx")
                 .build(), (user) -> {
+            user.setMobile("1xxxxxxxxxx");
             log.debug("用户信息: {}", user);
-            user.setMobile("13012345678");
         });
         User user = factory.create();
-        assertEquals("xxx", user.getName());
+        assertEquals("xxx", user.getUsername());
         assertEquals(100L, user.getId());
-        assertEquals("13012345678", user.getMobile());
+        assertEquals("1xxxxxxxxxx", user.getMobile());
     }
 
     interface IFactory<T> {
